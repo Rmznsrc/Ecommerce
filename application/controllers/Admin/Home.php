@@ -6,12 +6,11 @@ class Home extends CI_Controller {
         {
                 parent::__construct();
                 error_reporting(0);
-              //  $this->load->model("Session_Model");
-               
-                /* 
-                	if(!$this->session->userdata("admin_session"))
-			    redirect(base_url().'login');
-                */
+                $this->load->library("session");  
+              
+                if(!$this->session->userdata("user")){
+			  	  redirect(base_url().'admin/login');
+				}
 
                  
                 
