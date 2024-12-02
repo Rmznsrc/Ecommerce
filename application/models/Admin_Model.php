@@ -1,12 +1,14 @@
 <?php
-class Session_Model extends CI_Model {
+
+
+class Admin_Model extends CI_Model {
 
 		function __construct(){
 			parent::__construct();
 
 		}
 
-	public function login($email,$sifre)
+public function login($email,$sifre)
 	{
 		
 		//echo $email.$sifre;
@@ -39,6 +41,8 @@ class Session_Model extends CI_Model {
 		$this->db->update($table,$data);
 		return true;	
 	}
+	
+	
 	
 	
 	

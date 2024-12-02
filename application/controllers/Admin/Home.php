@@ -8,7 +8,7 @@ class Home extends CI_Controller {
                 error_reporting(0);
                 $this->load->library("session");  
               
-                if(!$this->session->userdata("user")){
+                if(!$this->session->userdata("oturum_data")){
 			  	  redirect(base_url().'admin/login');
 				}
 

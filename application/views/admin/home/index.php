@@ -8,16 +8,13 @@
       <li class="breadcrumb-item active">Dashboard</li>
     </ol>
   </nav>
-</div><!-- End Page Title -->
+</div>
 
 <section class="section dashboard">
   <div class="row">
-
-    <!-- Left side columns -->
+ 
     <div class="col-lg-8">
-      <div class="row">
-
-        <!-- Sales Card -->
+      <div class="row"> 
         <div class="col-xxl-4 col-md-6">
           <div class="card info-card sales-card">
 
