@@ -58,11 +58,11 @@ class Database_Model extends CI_Model{
 	public function get_urun($id)
 	{
 		
-		$sql="SELECT turu.adi as turadi,kategoriler.adi as katadi, urunler.* FROM urunler
+		$sql="SELECT turu.adi as turadi,urun_kategori.adi as katadi, urunler.* FROM urunler
 		LEFT JOIN turu
 		ON urunler.turu=turu.Id
-		LEFT JOIN kategoriler
-		ON urunler.kategori_id=kategoriler.Id
+		LEFT JOIN urun_kategori
+		ON urunler.kategori_id=urun_kategori.Id
 		WHERE urunler.Id=".$id;
 		
 	
@@ -78,11 +78,11 @@ class Database_Model extends CI_Model{
 		public function get_kategori($id)
 	{
 		
-		$sql="SELECT turu.adi as turadi,kategoriler.adi as katadi,urunler.* FROM urunler
+		$sql="SELECT turu.adi as turadi,urun_kategori.adi as katadi,urunler.* FROM urunler
 		LEFT JOIN turu
 		ON urunler.turu=turu.Id
-		LEFT JOIN kategoriler
-		ON urunler.kategori_id=kategoriler.Id
+		LEFT JOIN urun_kategori
+		ON urunler.kategori_id=urun_kategori.Id
 		WHERE urunler.kategori_id=".$id;
 		
 		//"ORDER BY urunler.adi";

@@ -3,44 +3,106 @@
 
 <ul class="sidebar-nav" id="sidebar-nav">
 
+<?php 
+ 
+	$adminanasayfa	  = "";
+	$adminurunler	  = "";
+	$adminkategoriler = "";
+	$adminsiparisler  = "";
+	$adminmusteriler  = "";
+	$adminsss  		  = "";
+	switch($sidebartitle){
+		case "adminanasayfa":
+			$adminanasayfa="";
+			$adminurunler="collapsed";
+			$adminkategoriler="collapsed";
+			$adminsiparisler="collapsed";
+			$adminmusteriler="collapsed";
+			$adminsss="collapsed";
+		break;
+		case "adminurunler":
+			$adminanasayfa="collapsed";
+			$adminurunler="";
+			$adminkategoriler="collapsed";
+			$adminsiparisler="collapsed";
+			$adminmusteriler="collapsed";
+			$adminsss="collapsed";
+		break;
+		case "adminkategoriler":
+			$adminanasayfa="collapsed";
+			$adminurunler="collapsed";
+			$adminkategoriler="";
+			$adminsiparisler="collapsed";
+			$adminmusteriler="collapsed";
+			$adminsss="collapsed";
+		break;
+		case "adminsiparisler":
+			$adminanasayfa="collapsed";
+			$adminurunler="collapsed";
+			$adminkategoriler="collapsed";
+			$adminsiparisler="";
+			$adminmusteriler="collapsed";
+			$adminsss="collapsed";
+		break;
+		case "adminmusteriler":
+			$adminanasayfa="collapsed";
+			$adminurunler="collapsed";
+			$adminkategoriler="collapsed";
+			$adminsiparisler="collapsed";
+			$adminmusteriler="";
+			$adminsss="collapsed";
+		break;
+		case "adminsss":
+			$adminanasayfa	  = "collapsed";
+			$adminurunler	  = "collapsed";
+			$adminkategoriler = "collapsed";
+			$adminsiparisler  = "collapsed";
+			$adminmusteriler  = "collapsed";
+			$adminsss 		  = "";
+		break;
+	}
+
+?>
+
+
   <li class="nav-item">
-    <a class="nav-link " href="<?=base_url()?>admin">
+    <a class="nav-link <?=$adminanasayfa?>" href="<?=base_url()?>admin">
       <i class="bi bi-grid"></i>
       <span>Anasayfa</span>
     </a>
-  </li><!-- End Dashboard Nav -->
+  </li>
 
  
 
   <li class="nav-item">
-    <a class="nav-link collapsed"  href="<?=base_url()?>admin/urunler">
-      <i class="bi bi-journal-text"></i><span>Ürünler</span>
+    <a class="nav-link <?=$adminurunler?>"  href="<?=base_url()?>admin/urunler">
+      <i class="ri-shopping-cart-fill"></i><span>Ürünler</span>
     </a>
      
-  </li><!-- End Forms Nav -->
+  </li>
 
   <li class="nav-item">
-    <a class="nav-link collapsed"  href="<?=base_url()?>">
-      <i class="bi bi-layout-text-window-reverse"></i><span>Kategoriler</span>
+    <a class="nav-link <?=$adminkategoriler?>"  href="<?=base_url()?>">
+      <i class="ri-list-check-2"></i><span>Kategoriler</span>
     </a>
    
-  </li><!-- End Tables Nav -->
+  </li>
 
   <li class="nav-item">
-    <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
-      <i class="bi bi-bar-chart"></i><span>Siparişler</span><i class="bi bi-chevron-down ms-auto"></i>
+    <a class="nav-link <?=$adminsiparisler?>"   href="#">
+      <i class="ri-luggage-cart-fill"></i><span>Siparişler</span> 
     </a> 
-  </li><!-- End Charts Nav -->
+  </li>
 
   <li class="nav-item">
-    <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
-      <i class="bi bi-gem"></i><span>Müşteriler</span><i class="bi bi-chevron-down ms-auto"></i>
+    <a class="nav-link <?=$adminmusteriler?>" href="#">
+      <i class="ri-user-star-fill"></i><span>Müşteriler</span> 
     </a>
      
   </li> 
   <li class="nav-item">
-    <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
-      <i class="bi bi-question-circle"></i><span>Sıkça Sorulan Sorular</span><i class="bi bi-chevron-down ms-auto"></i>
+    <a class="nav-link <?=$adminsss?>" href="<?=base_url()?>admin/sss">
+      <i class="ri-questionnaire-fill"></i><span>Sıkça Sorulan Sorular</span> 
     </a>
      
   </li> 

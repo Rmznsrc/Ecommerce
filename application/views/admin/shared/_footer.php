@@ -27,6 +27,8 @@
 
   <!-- Template Main JS File -->
   <script src="<?=base_url()?>assets/admin/assets/js/main.js"></script>
+  <script src="<?=base_url()?>assets/admin/js/dosyaekleme.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
 
 </body>
 

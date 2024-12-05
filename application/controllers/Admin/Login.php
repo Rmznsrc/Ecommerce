@@ -27,13 +27,14 @@ class Login extends CI_Controller {
 			if($result )
 			{
 				$oturum_dizi=array(
-				'id'=>$result[0]->KullaniciID, 
-				'email'=>$result[0]->Email,
-				'sifre'=>$result[0]->Sifre,
-				'adi'=>$result[0]->Adi,
-				'soyadi'=>$result[0]->Soyadi,
-				'tel'=>$result[0]->Tel 
-				);	
+					'id'=>$result[0]->KullaniciID, 
+					'email'=>$result[0]->Email,
+					'sifre'=>$result[0]->Sifre,
+					'adi'=>$result[0]->Adi,
+					'soyadi'=>$result[0]->Soyadi,
+					'tel'=>$result[0]->Tel,
+					'foto'=>$result[0]->Foto 
+					);	
 				$this->session->set_userdata('oturum_data',$oturum_dizi);
 				redirect(base_url().'admin/home');
 			}

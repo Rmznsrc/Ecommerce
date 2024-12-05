@@ -1,0 +1,25 @@
+function kategoriListe($id)
+    {
+        global $con;
+        
+        echo "<ul>";
+        
+        $kod="SELECT
+              K.id, K.kategoriAdi,
+              (SELECT COUNT(A.id) FROM kategoriler AS A WHERE A.pid=K.id ) as altKategoriSayisi
+              FROM kategoriler AS K
+              WHERE K.pid={$id}";
+        $sql=mysqli_query($con,$kod);
+        while($veri=mysqli_fetch_assoc($sql))
+        {
+            echo "<li>".$veri["kategoriAdi"];
+            
+            if($veri["altKategoriSayisi"]>0)
+                kategoriListe($veri["id"]);
+            
+            echo "</li>";
+
+        }
+        
+        echo "</ul>";
+    }
