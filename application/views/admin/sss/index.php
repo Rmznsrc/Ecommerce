@@ -1,20 +1,12 @@
- 
- 
-<main id="main" class="main"> 
+ <main id="main" class="main"> 
 	<section class="section dashboard">
-	  <div class="row">
-	 
+	  <div class="row"> 
 		<div class="col-lg-12">
 		  <div class="row">  
 			<div class="col-12">
-			  <div class="card">
-
-			
-
+			  <div class="card"> 
 				<div class="card-body with-border">
-				  <h5 class="card-title">SSS &emsp; <a type="button" class="btn btn-success btn-sm" href="<?=base_url()?>admin/sss/sssekle"><i class="bi bi-plus"></i> Yeni Ürün Ekle</a> </h5> 
-				 
-			   
+				  <h5 class="card-title">SSS &emsp; <a type="button" class="btn btn-success btn-sm" href="<?=base_url()?>admin/sss/sssekle"><i class="bi bi-plus"></i> Yeni SSS Ekle</a> </h5>  
 				  <table class="table datatable">
 					<thead>
 					  <tr>
@@ -42,19 +34,13 @@
 					 <?php } ?>
 					</tbody>
 				  </table>  
-				</div>
-
+				</div> 
 			  </div>
-			</div> 
-
+			</div>  
 		  </div>
-		</div> 
-
-		 
-	   
+		</div>  
 	  </div>
-	</section>
-
+	</section> 
 </main> 
  
 

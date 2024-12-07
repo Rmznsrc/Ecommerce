@@ -1,5 +1,3 @@
- 
- 
 <main id="main" class="main"> 
 	<section class="section dashboard">
 	  <div class="row">
@@ -9,9 +7,7 @@
 			<div class="col-12">
 			  <div class="card"> 
 				<div class="card-body with-border">
-				  <h5 class="card-title">Müşteriler &emsp; <a type="button" class="btn btn-success btn-sm" href="<?=base_url()?>admin/musteriler/musteriekle"><i class="bi bi-plus"></i> Yeni Ürün Ekle</a> </h5> 
-				 
-			   
+				  <h5 class="card-title">Müşteriler &emsp; <a type="button" class="btn btn-success btn-sm" href="<?=base_url()?>admin/musteriler/musteriekle"><i class="bi bi-plus"></i> Yeni Müşteri Ekle</a> </h5> 
 				  <table class="table datatable">
 					<thead>
 					  <tr>

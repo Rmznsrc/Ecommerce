@@ -1,47 +1,32 @@
- 
-
-
-                <?php if($this->session->flashdata("sonucbasarili"))
-				 {
-					 ?>
-
-
-                <div class="panel-body">
-                    <div class="alert alert-success">
-                        <strong>İşlem :</strong> <?=$this->session->flashdata("sonucbasarili")?>
-                    </div>
-                </div>
-
-
-                <?php
-					}
-				 ?>
-				 <?php if($this->session->flashdata("sonucbasarisiz"))
-				 {
-					 ?>
-
-
-                <div class="panel-body">
-                    <div class="alert alert-danger">
-                        <strong>İşlem :</strong> <?=$this->session->flashdata("sonucbasarisiz")?>
-                    </div>
-                </div>
-
-
-                <?php
-					}
-				 ?>
-              <main id="main" class="main"> 
+ <?php if($this->session->flashdata("sonucbasarili"))
+	{
+		?> 
+<div class="panel-body">
+	<div class="alert alert-success">
+		<strong>İşlem :</strong> <?=$this->session->flashdata("sonucbasarili")?>
+	</div>
+</div> 
+<?php
+	}
+	?>
+	<?php if($this->session->flashdata("sonucbasarisiz"))
+	{
+		?>
+<div class="panel-body">
+	<div class="alert alert-danger">
+		<strong>İşlem :</strong> <?=$this->session->flashdata("sonucbasarisiz")?>
+	</div>
+</div>
+<?php
+	}
+?>
+<main id="main" class="main"> 
 	<section class="section dashboard">
 	  <div class="row">
-	 
 		<div class="col-lg-12">
 		  <div class="row">  
 			<div class="col-12">
 			  <div class="card">
-
-			
-
 				<div class="card-body with-border">
 				  <h5 class="card-title">Sıkça Sorulan Sorular &emsp;  </h5> 
 				 
@@ -67,7 +52,7 @@
 								</div>
 							</div>  
                             <button type="submit" class="btn btn-success mr-2">Kaydet</button>
-                            <button class="btn btn-light">İptal</button>
+                            <button class="btn btn-light" type="button" onclick="window.location.href='<?=base_url()?>admin/sss'">İptal</button>
                         </form>
                     </div>
 

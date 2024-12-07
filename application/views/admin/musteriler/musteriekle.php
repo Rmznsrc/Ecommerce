@@ -73,7 +73,7 @@
 										</div>
 									</div>  
 									<button type="submit" class="btn btn-success mr-2">Kaydet</button>
-									<button class="btn btn-light">İptal</button>
+									<button class="btn btn-light" type="button" onclick="window.location.href='<?=base_url()?>admin/musteriler'">İptal</button>
 								</form>
                    			</div> 
                			</div>
