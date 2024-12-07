@@ -9,7 +9,7 @@ class Urunler extends CI_Controller {
 			$this->load->library("session");  
 			$this->load->model("Urunler_Model");  
 			
-			$data['sidebartitle'] = "adminurunler";
+ 
 			
 			if(!$this->session->userdata("oturum_data")){
 				redirect(base_url().'admin/login');

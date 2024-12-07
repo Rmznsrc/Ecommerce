@@ -44,6 +44,13 @@ class Database_Model extends CI_Model{
 		$this->db->update($table,$data);
 		return true;	
 	}
+	public function update_data_with_column($table,$data,$id, $column)
+	{
+		
+		$this->db->where($column,$id);
+		$this->db->update($table,$data);
+		return true;	
+	}
 	public function mesaj_listesi()
 	{
 		$query = $this->db->get('mesajlar');

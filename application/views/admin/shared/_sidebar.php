@@ -89,13 +89,13 @@
   </li>
 
   <li class="nav-item">
-    <a class="nav-link <?=$adminsiparisler?>"   href="#">
+    <a class="nav-link <?=$adminsiparisler?>" href="<?=base_url()?>admin/siparisler">
       <i class="ri-luggage-cart-fill"></i><span>Siparişler</span> 
     </a> 
   </li>
 
   <li class="nav-item">
-    <a class="nav-link <?=$adminmusteriler?>" href="#">
+    <a class="nav-link <?=$adminmusteriler?>" href="<?=base_url()?>admin/musteriler">
       <i class="ri-user-star-fill"></i><span>Müşteriler</span> 
     </a>
      

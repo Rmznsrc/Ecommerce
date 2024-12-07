@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
  
-$config['base_url'] = 'http://localhost:80/Ecommerce/';
+$config['base_url'] = 'http://localhost/Ecommerce/';
 
  
 $config['index_page'] = 'index.php';
