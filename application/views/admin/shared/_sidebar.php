@@ -60,6 +60,14 @@
 			$adminmusteriler  = "collapsed";
 			$adminsss 		  = "";
 		break;
+    default:
+      $adminanasayfa	  = "collapsed";
+			$adminurunler	  = "collapsed";
+			$adminkategoriler = "collapsed";
+			$adminsiparisler  = "collapsed";
+			$adminmusteriler  = "collapsed";
+			$adminsss 		  = "collapsed";
+    break;
 	}
 
 ?>

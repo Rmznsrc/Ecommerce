@@ -33,7 +33,12 @@ class Login extends CI_Controller {
 					'adi'=>$result[0]->Adi,
 					'soyadi'=>$result[0]->Soyadi,
 					'tel'=>$result[0]->Tel,
-					'foto'=>$result[0]->Foto 
+					'foto'=>$result[0]->Foto, 
+					'meslek'=>$result[0]->Meslek, 
+					'twitter'=>$result[0]->Twitter, 
+					'facebook'=>$result[0]->Facebook, 
+					'instagram'=>$result[0]->Instagram, 
+					'linkedin'=>$result[0]->Linkedin, 
 					);	
 				$this->session->set_userdata('oturum_data',$oturum_dizi);
 				redirect(base_url().'admin/home');

@@ -38,6 +38,7 @@ class Urunler extends CI_Controller {
 	public function urunekle()
 	{
 		$data["title"]="Ürün Ekle";
+		$data['sidebartitle'] = "adminurunler";
 		$data['ustkategoriler'] = $this->db->query("SELECT * FROM urun_kategori WHERE UstKategoriID = '0' AND Statu = '1'")->result();
 	 
 		$this->load->view('admin/shared/_header',$data);
@@ -118,6 +119,7 @@ class Urunler extends CI_Controller {
 	}
 	public function urunduzenle($id){
 		$data["title"]="Ürün Düzenle";
+		$data['sidebartitle'] = "adminurunler";
 		$data['ustkategoriler'] = $this->db->query("SELECT * FROM urun_kategori WHERE UstKategoriID = '0' AND Statu = '1'")->result();
 		$data['urun'] = $this->db->query("SELECT * FROM urunler WHERE UrunID = '".$id."' AND Statu = '1'")->result();
 	 
