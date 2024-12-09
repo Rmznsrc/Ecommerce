@@ -90,7 +90,7 @@
   </li>
 
   <li class="nav-item">
-    <a class="nav-link <?=$adminkategoriler?>"  href="<?=base_url()?>">
+    <a class="nav-link <?=$adminkategoriler?>"  href="<?=base_url()?>admin/kategoriler">
       <i class="ri-list-check-2"></i><span>Kategoriler</span>
     </a>
    

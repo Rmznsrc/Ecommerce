@@ -37,57 +37,39 @@ class Profil extends CI_Controller {
 		$this->session->set_flashdata("sonuc","Kayıt Silme İşlemi Başarı ile Gerçekleştirildi");
 		redirect(base_url()."admin/profil",$data); 
 
-	}
-	public function profilekle()
-	{
-		$data["title"]="profil Ekle";
-		$data['sidebartitle'] = "adminprofil";
-		$data['profil'] = $this->db->query("SELECT * FROM profil WHERE Statu = '1'")->result();
-	 
-		$this->load->view('admin/shared/_header',$data);
-		$this->load->view('admin/shared/_sidebar');
-		$this->load->view('admin/profil/profilekle');
-		$this->load->view('admin/shared/_footer');
-		
-	} 
-	public function profileklekaydet()
-	{		
-		$data = array(
-			'Baslik' => $this->input->post('baslik'),
-			'Soru' => $this->input->post('soru'),
-			'Cevap' => $this->input->post('cevap')  
-		);
-		$resultid = $this->Database_Model->insert_data('profil',$data);
-		 
-		if($resultid){
-			$this->session->set_flashdata("sonucbasarili","Ürün Ekleme İşlemi Başarı ile Gerçekleştirildi.");
-		}else{
-			$this->session->set_flashdata("sonucbasarisiz","Ürün Ekleme İşlemi Başarı Başarısız.");
-		}
-		
-		redirect(base_url()."admin/profil",$data); 
-	}
-	public function profilduzenle($id){
-		$data["title"]="profil Düzenle"; 
-		$data['sidebartitle'] = "adminprofil";
-		$data['urun'] = $this->db->query("SELECT * FROM profil WHERE profilID = '".$id."' AND Statu = '1'")->result();
-	 
-		$this->load->view('admin/shared/_header',$data);
-		$this->load->view('admin/shared/_sidebar');
-		$this->load->view('admin/profil/profilduzenle');
-		$this->load->view('admin/shared/_footer');
-	}
-	
+	}  
 	public function profilduzenlekaydet($id)
 	{  
 		$data2 = array(
-			'Baslik' => $this->input->post('baslik'),
-			'Soru' => $this->input->post('soru'),
-			'Cevap' => $this->input->post('cevap')
+			'Adi' => $this->input->post('Adi'),
+			'Soyadi' => $this->input->post('Soyadi'),
+			'Tel' => $this->input->post('Tel'),
+			'Meslek' => $this->input->post('Meslek'),
+			'Adres' => $this->input->post('Adres'),
+			'Email' => $this->input->post('Email'),
+			'Twitter' => $this->input->post('Twitter'),
+			'Facebook' => $this->input->post('Facebook'),
+			'Instagram' => $this->input->post('Instagram'),
+			'Linkedin' => $this->input->post('Linkedin'), 
 		); 
-		$this->Database_Model->update_data("profil",$data2,$id);
+		$this->Database_Model->update_data("kullanicilar",$data2,$id);
 		$this->session->set_flashdata("sonuc","Kayıt Güncelleme İşlemi Başarı ile Gerçekleştirildi");
 		redirect(base_url()."admin/profil"); 
 	} 
- 
+	public function profilsifredegistir($id)
+	{  
+		$mevcutsifre 	 =  md5($this->input->post('mevcutsifre'));
+		$yenisifre       =  $this->input->post('yenisifre');
+		$yenisifretekrar =  $this->input->post('yenisifretekrar');
+		if($mevcutsifre == $this->session->oturum_data['sifre']){
+			$data2 = array(
+				'Sifre' => md5($yenisifre), 
+			); 
+			$this->Database_Model->update_data_with_column("kullanicilar",$data2,$id,'KullaniciID');
+			$this->session->set_flashdata("sonucbasarili","Kayıt Güncelleme İşlemi Başarı ile Gerçekleştirildi"); 
+		}else{
+			$this->session->set_flashdata("sonucbasarisiz","Kayıt Güncelleme İşlemi Başarısız. Mevcut şifre doğru değil!"); 
+		} 
+		redirect(base_url()."admin/profil"); 
+	}
 }

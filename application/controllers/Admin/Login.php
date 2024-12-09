@@ -7,9 +7,7 @@ class Login extends CI_Controller {
                 parent::__construct();
                 error_reporting(0);
                	$this->load->model("Admin_Model");
-				$this->load->library("session");
-                
-             
+				$this->load->library("session"); 
         }
 		public function index()
 		{
@@ -39,6 +37,7 @@ class Login extends CI_Controller {
 					'facebook'=>$result[0]->Facebook, 
 					'instagram'=>$result[0]->Instagram, 
 					'linkedin'=>$result[0]->Linkedin, 
+					'ozet'=>$result[0]->Ozet 
 					);	
 				$this->session->set_userdata('oturum_data',$oturum_dizi);
 				redirect(base_url().'admin/home');

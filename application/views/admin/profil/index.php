@@ -1,16 +1,46 @@
 <main id="main" class="main">
+<?php if($this->session->flashdata("sonucbasarili"))
+		{
+			?>
 
-<div class="pagetitle">
-  <h1>Profile</h1>
-  <nav>
-	<ol class="breadcrumb">
-	  <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-	  <li class="breadcrumb-item">Users</li>
-	  <li class="breadcrumb-item active">Profile</li>
-	</ol>
-  </nav>
-</div><!-- End Page Title -->
 
+	<div class="panel-body">
+		<div class="alert alert-success">
+			<strong>İşlem :</strong> <?=$this->session->flashdata("sonucbasarili")?>
+		</div>
+	</div>
+
+
+	<?php
+		}
+		?>
+		<?php if($this->session->flashdata("sonucbasarisiz"))
+		{
+			?>
+
+
+	<div class="panel-body">
+		<div class="alert alert-danger">
+			<strong>İşlem :</strong> <?=$this->session->flashdata("sonucbasarisiz")?>
+		</div>
+	</div>
+
+
+	<?php
+		}
+		?>
+
+<script>
+function sifrekontrol(){
+	var yenisifre 		= $("#yenisifre").val();
+	var yenisifretekrar = $("#yenisifretekrar").val();
+	if(yenisifre != yenisifretekrar){
+		$("#skontdiv").html('<span style="color:red;">Şifre uyuşmuyor!</span>');
+	}else{
+		$("#skontdiv").html('<span style="color:green;">Şifre uyuşuyor.</span>'); 
+	}
+}
+</script>
 <section class="section profile">
   <div class="row">
 	<div class="col-xl-4">
@@ -32,188 +62,147 @@
 
 	</div>
 
-	<div class="col-xl-8">
-
+	<div class="col-xl-8"> 
 	  <div class="card">
-		<div class="card-body pt-3">
-		  <!-- Bordered Tabs -->
-		  <ul class="nav nav-tabs nav-tabs-bordered">
-
+		<div class="card-body pt-3"> 
+		  <ul class="nav nav-tabs nav-tabs-bordered"> 
 			<li class="nav-item">
 			  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Genel Bakış</button>
-			</li>
-
+			</li> 
 			<li class="nav-item">
 			  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Profili Düzenle</button>
-			</li>
-
+			</li> 
 			<li class="nav-item">
 			  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Ayarlar</button>
-			</li>
-
+			</li> 
 			<li class="nav-item">
 			  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Şifre Değiştir</button>
-			</li>
-
+			</li> 
 		  </ul>
-		  <div class="tab-content pt-2">
-
+		  <div class="tab-content pt-2"> 
 			<div class="tab-pane fade show active profile-overview" id="profile-overview">
 			  <h5 class="card-title">Hakkımda</h5>
-			  <p class="small fst-italic">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</p>
-
-			  <h5 class="card-title">Profil Detayları</h5>
-
+			  <p class="small fst-italic"><?=$this->session->oturum_data['ozet']?></p> 
+			  <h5 class="card-title">Profil Detayları</h5> 
 			  <div class="row">
 				<div class="col-lg-3 col-md-4 label ">Ad Soyad</div>
-				<div class="col-lg-9 col-md-8">Kevin Anderson</div>
-			  </div>
-
-			  <div class="row">
-				<div class="col-lg-3 col-md-4 label">Şirket</div>
-				<div class="col-lg-9 col-md-8">Lueilwitz, Wisoky and Leuschke</div>
-			  </div>
-
+				<div class="col-lg-9 col-md-8"><?=$this->session->oturum_data['adi']?> <?=$this->session->oturum_data['soyadi']?></div>
+			  </div> 
 			  <div class="row">
 				<div class="col-lg-3 col-md-4 label">Meslek</div>
 				<div class="col-lg-9 col-md-8"><?=$this->session->oturum_data['meslek']?></div>
-			  </div>
-
-			  <div class="row">
-				<div class="col-lg-3 col-md-4 label">Ülke</div>
-				<div class="col-lg-9 col-md-8">Türkiye</div>
-			  </div>
-
+			  </div> 
 			  <div class="row">
 				<div class="col-lg-3 col-md-4 label">Adres</div>
-				<div class="col-lg-9 col-md-8">Eskişehir</div>
-			  </div>
-
+				<div class="col-lg-9 col-md-8"><?=$this->session->oturum_data['adres']?></div>
+			  </div> 
 			  <div class="row">
 				<div class="col-lg-3 col-md-4 label">Tel</div>
-				<div class="col-lg-9 col-md-8">05555555555</div>
-			  </div>
-
+				<div class="col-lg-9 col-md-8"><?=$this->session->oturum_data['tel']?></div>
+			  </div> 
 			  <div class="row">
 				<div class="col-lg-3 col-md-4 label">Email</div>
-				<div class="col-lg-9 col-md-8">Email</div>
-			  </div>
-
-			</div>
-
-			<div class="tab-pane fade profile-edit pt-3" id="profile-edit">
-
-			  <!-- Profile Edit Form -->
+				<div class="col-lg-9 col-md-8"><?=$this->session->oturum_data['email']?></div>
+			  </div> 
+			</div> 
+			<div class="tab-pane fade profile-edit pt-3" id="profile-edit"> 
 			  <form>
 				<div class="row mb-3">
-				  <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
+				  <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profil Resmi</label>
 				  <div class="col-md-8 col-lg-9">
-					<img src="assets/img/profile-img.jpg" alt="Profile">
+					<img src="<?=base_url()?>uploads/profil/<?=$this->session->oturum_data['foto']?>" alt="Profile">
 					<div class="pt-2">
-					  <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
-					  <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
+					  <a href="#" class="btn btn-primary btn-sm" title="Yeni Profil Resmi Yükle"><i class="bi bi-upload"></i></a>
+					  <a href="#" class="btn btn-danger btn-sm" title="Profil Resmi Kaldır"><i class="bi bi-trash"></i></a>
 					</div>
 				  </div>
 				</div>
 
 				<div class="row mb-3">
-				  <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
+				  <label for="ad" class="col-md-4 col-lg-3 col-form-label">Ad</label>
 				  <div class="col-md-8 col-lg-9">
-					<input name="fullName" type="text" class="form-control" id="fullName" value="Kevin Anderson">
+					<input name="ad" id="ad" type="text" class="form-control" value="<?=$this->session->oturum_data['adi']?>">
+				  </div>
+				</div>
+				<div class="row mb-3">
+				  <label for="soyad" class="col-md-4 col-lg-3 col-form-label">Soyad</label>
+				  <div class="col-md-8 col-lg-9">
+					<input name="soyad" id="soyad" type="text" class="form-control" value="<?=$this->session->oturum_data['soyadi']?>">
+				  </div>
+				</div>
+				<div class="row mb-3">
+				  <label for="ozet" class="col-md-4 col-lg-3 col-form-label">Özet</label>
+				  <div class="col-md-8 col-lg-9">
+					<textarea class="form-control" name="ozet" id="ozet" style="height: 100px"><?=$this->session->oturum_data['ozet']?></textarea>
+				  </div>
+				</div>
+ 
+				<div class="row mb-3">
+				  <label for="meslek" class="col-md-4 col-lg-3 col-form-label">Meslek</label>
+				  <div class="col-md-8 col-lg-9">
+					<input type="text" class="form-control" id="meslek" name="meslek" value="<?=$this->session->oturum_data['meslek']?>">
+				  </div>
+				</div> 
+				<div class="row mb-3">
+				  <label for="adres" class="col-md-4 col-lg-3 col-form-label">Adres</label>
+				  <div class="col-md-8 col-lg-9">
+					<input type="text" class="form-control" id="adres" name="adres" value="<?=$this->session->oturum_data['adres']?>">
 				  </div>
 				</div>
 
 				<div class="row mb-3">
-				  <label for="about" class="col-md-4 col-lg-3 col-form-label">About</label>
+				  <label for="tel" class="col-md-4 col-lg-3 col-form-label">Tel</label>
 				  <div class="col-md-8 col-lg-9">
-					<textarea name="about" class="form-control" id="about" style="height: 100px">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</textarea>
-				  </div>
-				</div>
-
-				<div class="row mb-3">
-				  <label for="company" class="col-md-4 col-lg-3 col-form-label">Company</label>
-				  <div class="col-md-8 col-lg-9">
-					<input name="company" type="text" class="form-control" id="company" value="Lueilwitz, Wisoky and Leuschke">
-				  </div>
-				</div>
-
-				<div class="row mb-3">
-				  <label for="Job" class="col-md-4 col-lg-3 col-form-label">Job</label>
-				  <div class="col-md-8 col-lg-9">
-					<input name="job" type="text" class="form-control" id="Job" value="Web Designer">
-				  </div>
-				</div>
-
-				<div class="row mb-3">
-				  <label for="Country" class="col-md-4 col-lg-3 col-form-label">Country</label>
-				  <div class="col-md-8 col-lg-9">
-					<input name="country" type="text" class="form-control" id="Country" value="USA">
-				  </div>
-				</div>
-
-				<div class="row mb-3">
-				  <label for="Address" class="col-md-4 col-lg-3 col-form-label">Address</label>
-				  <div class="col-md-8 col-lg-9">
-					<input name="address" type="text" class="form-control" id="Address" value="A108 Adam Street, New York, NY 535022">
-				  </div>
-				</div>
-
-				<div class="row mb-3">
-				  <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
-				  <div class="col-md-8 col-lg-9">
-					<input name="phone" type="text" class="form-control" id="Phone" value="(436) 486-3538 x29071">
+					<input type="text" class="form-control" id="tel" name="tel" value="<?=$this->session->oturum_data['tel']?>">
 				  </div>
 				</div>
 
 				<div class="row mb-3">
 				  <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
 				  <div class="col-md-8 col-lg-9">
-					<input name="email" type="email" class="form-control" id="Email" value="k.anderson@example.com">
+					<input name="email" type="email" class="form-control" id="Email" value="<?=$this->session->oturum_data['email']?>">
 				  </div>
 				</div>
 
 				<div class="row mb-3">
-				  <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Twitter Profile</label>
+				  <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Twitter</label>
 				  <div class="col-md-8 col-lg-9">
-					<input name="twitter" type="text" class="form-control" id="Twitter" value="https://twitter.com/#">
+					<input type="text" class="form-control" id="twitter" name="twitter" value="<?=$this->session->oturum_data['twitter']?>">
 				  </div>
 				</div>
 
 				<div class="row mb-3">
-				  <label for="Facebook" class="col-md-4 col-lg-3 col-form-label">Facebook Profile</label>
+				  <label for="Facebook" class="col-md-4 col-lg-3 col-form-label">Facebook</label>
 				  <div class="col-md-8 col-lg-9">
-					<input name="facebook" type="text" class="form-control" id="Facebook" value="https://facebook.com/#">
+					<input name="facebook" type="text" class="form-control" id="facebook" value="<?=$this->session->oturum_data['facebook']?>">
 				  </div>
 				</div>
 
 				<div class="row mb-3">
-				  <label for="Instagram" class="col-md-4 col-lg-3 col-form-label">Instagram Profile</label>
+				  <label for="Instagram" class="col-md-4 col-lg-3 col-form-label">Instagram</label>
 				  <div class="col-md-8 col-lg-9">
-					<input name="instagram" type="text" class="form-control" id="Instagram" value="https://instagram.com/#">
+					<input name="instagram" type="text" class="form-control" id="instagram" value="<?=$this->session->oturum_data['instagram']?>">
 				  </div>
 				</div>
 
 				<div class="row mb-3">
-				  <label for="Linkedin" class="col-md-4 col-lg-3 col-form-label">Linkedin Profile</label>
+				  <label for="Linkedin" class="col-md-4 col-lg-3 col-form-label">Linkedin</label>
 				  <div class="col-md-8 col-lg-9">
-					<input name="linkedin" type="text" class="form-control" id="Linkedin" value="https://linkedin.com/#">
+					<input name="linkedin" type="text" class="form-control" id="linkedin" value="<?=$this->session->oturum_data['linkedin']?>">
 				  </div>
 				</div>
 
 				<div class="text-center">
-				  <button type="submit" class="btn btn-primary">Save Changes</button>
+				  <button type="submit" class="btn btn-primary">Değişiklikleri Kaydet</button>
 				</div>
-			  </form><!-- End Profile Edit Form -->
-
+			  </form>
 			</div>
 
-			<div class="tab-pane fade pt-3" id="profile-settings">
-
-			  <!-- Settings Form -->
+			<div class="tab-pane fade pt-3" id="profile-settings"> 
 			  <form>
 
 				<div class="row mb-3">
-				  <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Email Notifications</label>
+				  <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Email Bildirimleri</label>
 				  <div class="col-md-8 col-lg-9">
 					<div class="form-check">
 					  <input class="form-check-input" type="checkbox" id="changesMade" checked>
@@ -243,51 +232,43 @@
 				</div>
 
 				<div class="text-center">
-				  <button type="submit" class="btn btn-primary">Save Changes</button>
+				  <button type="submit" class="btn btn-primary">Değişiklikleri Kaydet</button>
 				</div>
-			  </form><!-- End settings Form -->
-
-			</div>
-
-			<div class="tab-pane fade pt-3" id="profile-change-password">
-			  <!-- Change Password Form -->
-			  <form>
-
+			  </form>  
+			</div> 
+			<div class="tab-pane fade pt-3" id="profile-change-password"> 
+			  <form method="POST" action="<?=base_url()?>admin/profil/profilsifredegistir/<?=$this->session->oturum_data['id']?>"> 
 				<div class="row mb-3">
-				  <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
+				  <label for="mevcutsifre" class="col-md-4 col-lg-3 col-form-label">Mevcut Şifre</label>
 				  <div class="col-md-8 col-lg-9">
-					<input name="password" type="password" class="form-control" id="currentPassword">
+					<input name="mevcutsifre" type="password" class="form-control" id="mevcutsifre">
 				  </div>
 				</div>
 
 				<div class="row mb-3">
-				  <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
+				  <label for="yenisifre" class="col-md-4 col-lg-3 col-form-label">Yeni Şifre</label>
 				  <div class="col-md-8 col-lg-9">
-					<input name="newpassword" type="password" class="form-control" id="newPassword">
+					<input name="yenisifre" type="password" class="form-control" id="yenisifre">
 				  </div>
 				</div>
 
 				<div class="row mb-3">
-				  <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-enter New Password</label>
+				  <label for="yenisifretekrar" class="col-md-4 col-lg-3 col-form-label">Yeni Şifre Tekrar</label>
 				  <div class="col-md-8 col-lg-9">
-					<input name="renewpassword" type="password" class="form-control" id="renewPassword">
+					<input onkeyup="sifrekontrol()" name="yenisifretekrar" type="password" class="form-control" id="yenisifretekrar">
+					<div style="margin-top:5px;" id="skontdiv"></div>
 				  </div>
 				</div>
 
 				<div class="text-center">
-				  <button type="submit" class="btn btn-primary">Change Password</button>
+				  <button type="submit" class="btn btn-primary">Şifreyi Değiştir</button>
 				</div>
-			  </form><!-- End Change Password Form -->
-
-			</div>
-
-		  </div><!-- End Bordered Tabs -->
-
+			  </form> 
+			</div> 
+		  </div>  
 		</div>
-	  </div>
-
+	  </div> 
 	</div>
   </div>
-</section>
-
-</main><!-- End #main -->
+</section> 
+</main> 
