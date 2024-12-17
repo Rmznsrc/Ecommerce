@@ -23,8 +23,27 @@ class Kategoriler extends CI_Controller {
 		WHERE a.Statu = '1'");
 		$data['kategoriler'] = $sql->result();
 
-		$usql = $this->db->query("SELECT a.*	FROM urun_kategori a WHERE a.Statu = '1' AND a.UstKategoriID = '0'");
+		$usql = $this->db->query("SELECT a.* FROM urun_kategori a WHERE a.Statu = '1' AND a.UstKategoriID = '0'");
 		$data['ustkategoriler'] = $usql->result();
+		
+		foreach($data['ustkategoriler'] as $key => $rsk){
+			$ustid = $rsk->KategoriID;
+			$vsay = $this->db->query("SELECT COUNT(KategoriID) as say FROM urun_kategori WHERE UstKategoriID = '".$ustid."' AND Statu = '1'")->result();
+			$say = $vsay;
+			//var_dump($say);
+			while($say > 0){
+				$v = $this->db->query("SELECT * FROM urun_kategori WHERE UstKategoriID = '".$ustid."' AND Statu = '1'")->result();
+				//var_dump($v);
+				$data['K'][$v[0]->Adi] =$v[0]->Adi;
+				
+				$ustid = $v[0]->KategoriID;
+				//var_dump($ustid);
+				$var = $this->db->query("SELECT COUNT(KategoriID) as say FROM urun_kategori WHERE UstKategoriID = '".$ustid."' AND Statu = '1'")->result();
+				$say = $var[0]->say;
+			}
+			
+		}
+		$data['kategoriler']  = $this->db->query("SELECT * FROM urun_kategori WHERE Statu = '1'")->result();
 
 		$data['controller'] = $this; 
 
@@ -39,40 +58,33 @@ class Kategoriler extends CI_Controller {
 		$data['sidebartitle'] = "adminkategoriler";
 		$this->db->query("UPDATE urun_kategori SET Statu = '0' WHERE KategoriID = '".$id."'");
 		$this->session->set_flashdata("sonuc","Kayıt Silme İşlemi Başarı ile Gerçekleştirildi");
-		redirect(base_url()."admin/kategoriler",$data); 
-
+		redirect(base_url()."admin/kategoriler",$data);  
 	}
 	public function kategoriekle()
 	{
 		$data["title"]="Kategori Ekle";
 		$data['sidebartitle'] = "adminkategori";
-		$data['kategoriler'] = $this->db->query("SELECT * FROM urun_kategori WHERE Statu = '1'")->result();
+		$data['kategoriler']  = $this->db->query("SELECT * FROM urun_kategori WHERE Statu = '1'")->result();
 	 
 		$this->load->view('admin/shared/_header',$data);
 		$this->load->view('admin/shared/_sidebar');
 		$this->load->view('admin/kategoriler/kategoriekle');
-		$this->load->view('admin/shared/_footer');
-		
-	}
- 
-	
-
+		$this->load->view('admin/shared/_footer'); 
+	} 
 	public function kategorieklekaydet()
 	{		
 		$data = array(
-			'Baslik' => $this->input->post('baslik'),
-			'Soru' => $this->input->post('soru'),
-			'Cevap' => $this->input->post('cevap')  
+			'UstKategoriID' => $this->input->post('ustkategori'),
+			'Adi'   		=> $this->input->post('kategori') 
 		);
 		$resultid = $this->Database_Model->insert_data('urun_kategori',$data);
 		 
 		if($resultid){
-			$this->session->set_flashdata("sonucbasarili","Ürün Ekleme İşlemi Başarı ile Gerçekleştirildi.");
+			$this->session->set_flashdata("sonucbasarili","Kategori Ekleme İşlemi Başarı ile Gerçekleştirildi.");
 		}else{
-			$this->session->set_flashdata("sonucbasarisiz","Ürün Ekleme İşlemi Başarı Başarısız.");
+			$this->session->set_flashdata("sonucbasarisiz","Kategori Ekleme İşlemi Başarı Başarısız.");
 		}
-		
-		redirect(base_url()."admin/sss",$data); 
+		redirect(base_url()."admin/kategoriler",$data); 
 	}
 	public function kategoriduzenle($id){
 		$data["title"]		  = "Kategori Düzenle"; 
@@ -94,33 +106,9 @@ class Kategoriler extends CI_Controller {
 		); 
 		$this->Database_Model->update_data_with_column("urun_kategori",$data2,$id,'KategoriID');
 		$this->session->set_flashdata("sonuc","Kayıt Güncelleme İşlemi Başarı ile Gerçekleştirildi");
-		redirect(base_url()."admin/sss"); 
+		redirect(base_url()."admin/kategoriler"); 
 	} 
-	public function kategoriListe($id)
-    {
-             
-        echo "<ul>";
-        
-        $kod="SELECT K.KategoriID, K.Adi,
-              (SELECT COUNT(A.KategoriID) FROM urun_kategori AS A WHERE A.UstKategoriID = K.KategoriID ) as altKategoriSayisi
-              FROM urun_kategori AS K
-              WHERE K.UstKategoriID = {$id}";
-        $sql= $this->db->query($kod)->result();
-        foreach($sql as $key1 => $rssq)
-        {
-            echo "<li>".$rssq->Adi;
-            
-            if($rssq->altKategoriSayisi>0)
-                $this->kategoriListe($rssq->KategoriID);
-            
-            echo "</li>";
-
-        }
-        
-        echo "</ul>";
-
-		
-    }
+ 
 	public function get_cat_by_parent($id) {
 		$sql = $this->db->query("SELECT * FROM urun_kategori WHERE UstKategoriID = '".$id."'");
 		$data = $sql->result();
@@ -130,18 +118,104 @@ class Kategoriler extends CI_Controller {
 	
 	public function recursive( $array, $depth, $label ) {
 		$depth++;
-		//var_dump($array);
+		 
 		$data   = $this->get_cat_by_parent( $array->KategoriID );
+ 
 		if(count($data)) {
 			foreach( $data as $row) {
 				echo $label;
 				echo " &#x2192; ";
 				echo $row->Adi;
 				echo "<br />";
+				 
+				
 				$this->recursive( $row, $depth, $label . " &#x2192; " . $row->Adi );
+				 
+				
+				
+				 
+
 			}
 		}
 	}
+
+public	function get_categorytree($parent_id = 0)
+{
+ 
+    $return_arr = array();
+
+    $query = $this->db->where('UstKategoriID',$parent_id)->get('urun_kategori');
 	
+
+    foreach ($query->result() as $r)
+    {
+        $arr = array(
+            'KategoriID' => $r->KategoriID,
+            'Adi' => $r->Adi
+        );
+	 
+        if ($this->has_children($r->KategoriID))
+        {
+			 
+            $children = $this->get_categorytree($r->KategoriID);
+            if ($children)
+            {
+                $arr['children'] = $children;
+				 
+            }
+			 
+        }
+
+        $return_arr[] = $arr;
+
+    }
+
+    return $return_arr;
+
+}
+
+
+public	function gethtml($parent_id = 0)
+{
+ 
+    $return_arr = array();
+
+    $query = $this->db->where('UstKategoriID',$parent_id)->get('urun_kategori');
+	
+
+    foreach ($query->result() as $r)
+    {
+        $arr = array(
+            //'KategoriID' => $r->KategoriID,
+            'Adi' => $r->Adi
+        );
+	 
+        if ($this->has_children($r->KategoriID))
+        {
+			 
+            $children = $this->gethtml($r->KategoriID);
+            if ($children)
+            {
+                $arr = $children;
+				 
+            }
+			 
+        }
+
+        $return_arr[$r->Adi] = $arr;
+
+    }
+
+    return $return_arr;
+
+}
+function has_children($id)
+{
+    $this->db->where('UstKategoriID',$id);
+    $this->db->from('urun_kategori');
+
+    return $this->db->count_all_results();
+
+}
 
 }
