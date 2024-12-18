@@ -112,7 +112,7 @@ class Urunler extends CI_Controller {
 			$this->Urunler_Model->urun_update_data("urunler",$data2,$resultid);
 			$this->session->set_flashdata("sonucbasarili","Ürün Ekleme İşlemi Başarı ile Gerçekleştirildi.");
 		}else{
-			$this->session->set_flashdata("sonucbasarisiz","Ürün Ekleme İşlemi Başarı Başarısız.");
+			$this->session->set_flashdata("sonucbasarisiz","Ürün Ekleme İşlemi Başarısız.");
 		}
 		
 		redirect(base_url()."admin/urunler",$data); 

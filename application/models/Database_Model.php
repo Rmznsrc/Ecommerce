@@ -44,10 +44,10 @@ class Database_Model extends CI_Model{
 		$this->db->update($table,$data);
 		return true;	
 	}
-	public function update_data_with_column($table,$data,$id, $column)
+	public function update_data_with_column($table,$data,$id, $idcolumnname)
 	{
 		
-		$this->db->where($column,$id);
+		$this->db->where($idcolumnname,$id);
 		$this->db->update($table,$data);
 		return true;	
 	}

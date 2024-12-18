@@ -11,6 +11,7 @@
 	$adminsiparisler  = "";
 	$adminmusteriler  = "";
 	$adminsss  		  = "";
+  $adminkullanicilar = "";
 	switch($sidebartitle){
 		case "adminanasayfa":
 			$adminanasayfa="";
@@ -19,6 +20,7 @@
 			$adminsiparisler="collapsed";
 			$adminmusteriler="collapsed";
 			$adminsss="collapsed";
+      $adminkullanicilar = "collapsed";
 		break;
 		case "adminurunler":
 			$adminanasayfa="collapsed";
@@ -27,6 +29,7 @@
 			$adminsiparisler="collapsed";
 			$adminmusteriler="collapsed";
 			$adminsss="collapsed";
+      $adminkullanicilar = "collapsed";
 		break;
 		case "adminkategoriler":
 			$adminanasayfa="collapsed";
@@ -35,6 +38,7 @@
 			$adminsiparisler="collapsed";
 			$adminmusteriler="collapsed";
 			$adminsss="collapsed";
+      $adminkullanicilar = "collapsed";
 		break;
 		case "adminsiparisler":
 			$adminanasayfa="collapsed";
@@ -43,6 +47,7 @@
 			$adminsiparisler="";
 			$adminmusteriler="collapsed";
 			$adminsss="collapsed";
+      $adminkullanicilar = "collapsed";
 		break;
 		case "adminmusteriler":
 			$adminanasayfa="collapsed";
@@ -51,6 +56,7 @@
 			$adminsiparisler="collapsed";
 			$adminmusteriler="";
 			$adminsss="collapsed";
+      $adminkullanicilar = "collapsed";
 		break;
 		case "adminsss":
 			$adminanasayfa	  = "collapsed";
@@ -59,6 +65,16 @@
 			$adminsiparisler  = "collapsed";
 			$adminmusteriler  = "collapsed";
 			$adminsss 		  = "";
+      $adminkullanicilar = "collapsed";
+		break;
+    case "adminkullanicilar":
+			$adminanasayfa	  = "collapsed";
+			$adminurunler	  = "collapsed";
+			$adminkategoriler = "collapsed";
+			$adminsiparisler  = "collapsed";
+			$adminmusteriler  = "collapsed";
+			$adminsss 		  = "collapsed";
+      $adminkullanicilar = "";
 		break;
     default:
       $adminanasayfa	  = "collapsed";
@@ -67,7 +83,9 @@
 			$adminsiparisler  = "collapsed";
 			$adminmusteriler  = "collapsed";
 			$adminsss 		  = "collapsed";
+      $adminkullanicilar = "collapsed";
     break;
+    
 	}
 
 ?>
@@ -117,54 +135,23 @@
   <li class="nav-heading">Admin</li>
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="users-profile.html">
+    <a class="nav-link collapsed" href="<?=base_url()?>admin/kullanicilar">
       <i class="bi bi-person"></i>
       <span>Kullanıcılar</span>
     </a>
-  </li><!-- End Profile Page Nav -->
+  </li> 
+
+  
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="pages-faq.html">
-      <i class="bi bi-question-circle"></i>
-      <span>F.A.Q</span>
-    </a>
-  </li><!-- End F.A.Q Page Nav -->
-
-  <li class="nav-item">
-    <a class="nav-link collapsed" href="pages-contact.html">
+    <a class="nav-link collapsed" href="<?=base_url()?>admin/mesajlar">
       <i class="bi bi-envelope"></i>
-      <span>Contact</span>
+      <span>Mesajlar</span>
     </a>
-  </li><!-- End Contact Page Nav -->
-
-  <li class="nav-item">
-    <a class="nav-link collapsed" href="pages-register.html">
-      <i class="bi bi-card-list"></i>
-      <span>Register</span>
-    </a>
-  </li><!-- End Register Page Nav -->
-
-  <li class="nav-item">
-    <a class="nav-link collapsed" href="pages-login.html">
-      <i class="bi bi-box-arrow-in-right"></i>
-      <span>Login</span>
-    </a>
-  </li><!-- End Login Page Nav -->
-
-  <li class="nav-item">
-    <a class="nav-link collapsed" href="pages-error-404.html">
-      <i class="bi bi-dash-circle"></i>
-      <span>Error 404</span>
-    </a>
-  </li><!-- End Error 404 Page Nav -->
-
-  <li class="nav-item">
-    <a class="nav-link collapsed" href="pages-blank.html">
-      <i class="bi bi-file-earmark"></i>
-      <span>Blank</span>
-    </a>
-  </li><!-- End Blank Page Nav -->
+  </li> 
+ 
+  
 
 </ul>
 
-</aside><!-- End Sidebar-->
+</aside> 
