@@ -7,7 +7,7 @@ class SSS extends CI_Controller {
 			parent::__construct();
 			error_reporting(0);
 			$this->load->library("session");  
-			$this->load->model("Urunler_Model");  
+			$this->load->model("Database_Model");  
 			
  
 			
@@ -63,9 +63,9 @@ class SSS extends CI_Controller {
 		$resultid = $this->Database_Model->insert_data('sss',$data);
 		 
 		if($resultid){
-			$this->session->set_flashdata("sonucbasarili","Ürün Ekleme İşlemi Başarı ile Gerçekleştirildi.");
+			$this->session->set_flashdata("sonucbasarili","Ekleme İşlemi Başarı ile Gerçekleştirildi.");
 		}else{
-			$this->session->set_flashdata("sonucbasarisiz","Ürün Ekleme İşlemi Başarı Başarısız.");
+			$this->session->set_flashdata("sonucbasarisiz","Ekleme İşlemi Başarı Başarısız.");
 		}
 		
 		redirect(base_url()."admin/sss",$data); 
@@ -73,7 +73,7 @@ class SSS extends CI_Controller {
 	public function sssduzenle($id){
 		$data["title"]="SSS Düzenle"; 
 		$data['sidebartitle'] = "adminsss";
-		$data['urun'] = $this->db->query("SELECT * FROM sss WHERE SSSID = '".$id."' AND Statu = '1'")->result();
+		$data['sss'] = $this->db->query("SELECT * FROM sss WHERE SSSID = '".$id."' AND Statu = '1'")->result();
 	 
 		$this->load->view('admin/shared/_header',$data);
 		$this->load->view('admin/shared/_sidebar');
