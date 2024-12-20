@@ -82,7 +82,7 @@ class Database_Model extends CI_Model{
 	}
 	}
 	
-		public function get_kategori($id)
+	public function get_kategori($id)
 	{
 		
 		$sql="SELECT turu.adi as turadi,urun_kategori.adi as katadi,urunler.* FROM urunler
@@ -96,11 +96,11 @@ class Database_Model extends CI_Model{
 	
 			$query=$this->db->query($sql);
 	
-	if($query->num_rows()==1){
-		return $query->result();
-	}else{
-		return false;
-	}
+		if($query->num_rows()==1){
+			return $query->result();
+		}else{
+			return false;
+		}
 	}
 
 	public function login($email,$sifre)
@@ -149,21 +149,42 @@ class Database_Model extends CI_Model{
 	public function onyuz_urunkategori()
 	{
 		$sql="SELECT * FROM urun_kategori";
-
 		$query=$this->db->query($sql);
-	
-	if($query->num_rows()==1){
-		return $query->result();
-	}else{
-		return false;
+		if($query->num_rows()==1){
+			return $query->result();
+		}else{
+			return false;
+		}
 	}
-}
+	public function GetAllSSS(){
+		$sql = "SELECT * FROM SSS WHERE statu = '1'";
+		$query = $this->db->query($sql);
+		if($query->num_rows()>=0){
+			return $query->result();
+			
+		}else{
+			return false;
+		}
+		
+	}
 	
 	
+	public function getSSS($id){
+		$this->db->where('SSSID',$id);
+		$query = $this->db->get('SSS');
+		return $query->row();
+
+	}
+	public function updateSSS($id, $data)
+	{
+		$this->db->where('SSSID',$id);
+		return $this->db->update('SSS',$data);
+	}
 	
-	
-	
-	
+	public function deleteSSS($id)
+    {
+        return $this->db->delete('SSS', ['SSSID' => $id]);
+    }
 	
 }
 

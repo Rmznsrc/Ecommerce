@@ -1,3 +1,4 @@
+
  <main id="main" class="main"> 
 	<section class="section dashboard">
 	  <div class="row"> 
@@ -7,6 +8,7 @@
 			  <div class="card"> 
 				<div class="card-body with-border">
 				  <h5 class="card-title">Mesajlar &emsp; <a type="button" class="btn btn-success btn-sm" href="<?=base_url()?>admin/mesajlar/mesajekle"><i class="bi bi-plus"></i> Yeni Mesaj Ekle</a> </h5>  
+			 
 				  <table class="table datatable">
 					<thead>
 					  <tr>

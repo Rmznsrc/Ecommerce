@@ -24,6 +24,8 @@ class SSS extends CI_Controller {
 		$sql = $this->db->query("SELECT * FROM sss WHERE Statu = '1'");
 		$data['sss'] = $sql->result();
 
+		
+
 		$this->load->view('admin/shared/_header',$data);
 		$this->load->view('admin/shared/_sidebar');
 		$this->load->view('admin/sss/index');
