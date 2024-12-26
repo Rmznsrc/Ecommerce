@@ -12,6 +12,16 @@ $route['admin/api/findsss/(:any)'] = 'admin/ApiSssController/findsss/$1';
 $route['admin/api/updateSSS/(:any)'] = 'admin/ApiSssController/updateSSS/$1';
 $route['admin/api/removeSSS/(:any)'] = 'admin/ApiSssController/removeSSS/$1';
 
+
+//$route['admin/nuSoapServer/getMember/wsdl'] = 'nuSoapServer/index/wsdl';
+
+
+
+
+
+
+
+
 $route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

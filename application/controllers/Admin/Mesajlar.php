@@ -63,11 +63,33 @@ class Mesajlar extends CI_Controller {
 		);
 		$resultid = $this->Database_Model->insert_data('mesajlar',$data);
 		 
-		if($resultid){
-			$this->session->set_flashdata("sonucbasarili","Ekleme İşlemi Başarı ile Gerçekleştirildi.");
+		$from_email = "surucuramazan7@gmail.com";
+        $to_email = $this->input->post('Email');
+
+		$config = array(
+			'protocol' => 'smtp',
+			'smtp_host' => 'ssl://smtp.gmail.com',
+			'smtp_port' => 587,
+			'smtp_user' => 'xxxx@gmail.com',
+			'smtp_pass' => 'xxxx',
+			'mailtype' => 'html',
+			'starttls'  => true,
+			'charset' => 'iso-8859-1'
+		);
+		$this->email->initialize($config); 
+		$this->email->from($from_email, 'Mesaj');
+        $this->email->to($to_email);
+        $this->email->subject('Mesajınız Var');
+        $this->email->message('Email Gönderme.');
+ 
+        if($this->email->send()){
+            $this->session->set_flashdata("sonucbasarili","Mail başarı ile gönderildi.");
+		 
 		}else{
-			$this->session->set_flashdata("sonucbasarisiz","Ekleme İşlemi Başarı Başarısız.");
+            $this->session->set_flashdata("sonucbasarisiz","Mail gönderme başarısız!");
+			 
 		}
+ 
 		
 		redirect(base_url()."admin/mesajlar",$data); 
 	}

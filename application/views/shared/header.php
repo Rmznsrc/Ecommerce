@@ -43,15 +43,9 @@
         <!-- Modernizr js -->
         <script src="<?=base_url()?>assets/js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
-    <body>
-    <!--[if lt IE 8]>
-		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="<?=base_url()?>assets/http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-	<![endif]-->
-        <!-- Begin Body Wrapper -->
-        <div class="body-wrapper">
-            <!-- Begin Header Area -->
-            <header>
-                <!-- Begin Header Top Area -->
+    <body> 
+        <div class="body-wrapper"> 
+            <header> 
                 <div class="header-top">
                     <div class="container">
                         <div class="row">
@@ -281,127 +275,93 @@
                                 <!-- Begin Header Bottom Menu Area -->
                                 <div class="hb-menu">
                                     <nav>
-                                        <ul>
-                                            <li class="dropdown-holder"><a href="<?=base_url()?>assets/index.html">Home</a>
+                                    
+                                    <?php 
+                                            /* echo "<pre>";
+                                        print_r($depArr);
+                                        echo "</pre>";*/
+                                        $i = 0;
+                                            function my_print($array,$i, $ky = 0) {
+                                             
+                                                    if($i == 0 ){
+                                                        $output = '<ul>';
+                                                    }else if($ky == 0){
+                                                        $output = '<ul class="hb-dropdown">';
+                                                    }else{
+                                                        $output = '<ul class="hb-dropdown hb-sub-dropdown">';
+                                                    }
+                                                    $i++;
+                                                  
+                                                        foreach ($array as $key=> $value) {
+                                                            
+                                                            if (is_array($value)) {
+                                                                
+                                                                // $output .= "<li>".$key.my_print($value)."</li>";
+                                                                $output .=' <li class="dropdown-holder"><a href="<?=base_url()?>assets/index.html">'.$key.my_print($value,$i,1).'</a>';
+                                                            
+                                                                
+                                                            } else {
+                                                                $output .= ' <li class="sub-dropdown-holder"><a href="<?=base_url()?>assets/index.html">'.$value.'</a></li>';                 
+                                                            }
+                                                        } 
+                                                  
+                                                 
+                                                $output .= "</ul>";
+                                                return $output; 
+                                              
+                                            } 
+                                         
+                                            echo my_print($depArr,0,0); 
+                                        
+                                        
+                                        ?> 
+                                             <ul>
+                                             <li class="dropdown-holder"><a href="blog-left-sidebar.html">Blog</a>
                                                 <ul class="hb-dropdown">
-                                                    <li class="active"><a href="<?=base_url()?>assets/index.html">Home One</a></li>
-                                                    <li><a href="<?=base_url()?>assets/index-2.html">Home Two</a></li>
-                                                    <li><a href="<?=base_url()?>assets/index-3.html">Home Three</a></li>
-                                                    <li><a href="<?=base_url()?>assets/index-4.html">Home Four</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="megamenu-holder"><a href="<?=base_url()?>assets/shop-left-sidebar.html">Shop</a>
-                                                <ul class="megamenu hb-megamenu">
-                                                    <li><a href="<?=base_url()?>assets/shop-left-sidebar.html">Shop Page Layout</a>
-                                                        <ul>
-                                                            <li><a href="<?=base_url()?>assets/shop-3-column.html">Shop 3 Column</a></li>
-                                                            <li><a href="<?=base_url()?>assets/shop-4-column.html">Shop 4 Column</a></li>
-                                                            <li><a href="<?=base_url()?>assets/shop-left-sidebar.html">Shop Left Sidebar</a></li>
-                                                            <li><a href="<?=base_url()?>assets/shop-right-sidebar.html">Shop Right Sidebar</a></li>
-                                                            <li><a href="<?=base_url()?>assets/shop-list.html">Shop List</a></li>
-                                                            <li><a href="<?=base_url()?>assets/shop-list-left-sidebar.html">Shop List Left Sidebar</a></li>
-                                                            <li><a href="<?=base_url()?>assets/shop-list-right-sidebar.html">Shop List Right Sidebar</a></li>
+                                                    <li class="sub-dropdown-holder"><a href="blog-left-sidebar.html">Blog Grid View</a>
+                                                        <ul class="hb-dropdown hb-sub-dropdown">
+                                                            <li class="sub-dropdown-holder">
+                                                                <a href="blog-2-column.html">Blog 2 Column</a>
+                                                                <ul class="hb-dropdown hb-sub-dropdownn">
+                                                                    <li><a href="blog-list.html">Blog List</a></li>
+                                                                    <li><a href="blog-list-left-sidebar.html">List Left Sidebar</a></li>
+                                                                    <li><a href="blog-list-right-sidebar.html">List Right Sidebar</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li><a href="blog-3-column.html">Blog 3 Column</a></li>
+                                                            <li><a href="blog-left-sidebar.html">Grid Left Sidebar</a></li>
+                                                            <li><a href="blog-right-sidebar.html">Grid Right Sidebar</a></li>
                                                         </ul>
                                                     </li>
-                                                    <li><a href="<?=base_url()?>assets/single-product-gallery-left.html">Single Product Style</a>
-                                                        <ul>
-                                                            <li><a href="<?=base_url()?>assets/single-product-carousel.html">Single Product Carousel</a></li>
-                                                            <li><a href="<?=base_url()?>assets/single-product-gallery-left.html">Single Product Gallery Left</a></li>
-                                                            <li><a href="<?=base_url()?>assets/single-product-gallery-right.html">Single Product Gallery Right</a></li>
-                                                            <li><a href="<?=base_url()?>assets/single-product-tab-style-top.html">Single Product Tab Style Top</a></li>
-                                                            <li><a href="<?=base_url()?>assets/single-product-tab-style-left.html">Single Product Tab Style Left</a></li>
-                                                            <li><a href="<?=base_url()?>assets/single-product-tab-style-right.html">Single Product Tab Style Right</a></li>
+                                                    <li class="sub-dropdown-holder"><a href="blog-list-left-sidebar.html">Blog List View</a>
+                                                        <ul class="hb-dropdown hb-sub-dropdown">
+                                                            <li><a href="blog-list.html">Blog List</a></li>
+                                                            <li><a href="blog-list-left-sidebar.html">List Left Sidebar</a></li>
+                                                            <li><a href="blog-list-right-sidebar.html">List Right Sidebar</a></li>
                                                         </ul>
                                                     </li>
-                                                    <li><a href="<?=base_url()?>assets/single-product.html">Single Products</a>
-                                                        <ul>
-                                                            <li><a href="<?=base_url()?>assets/single-product.html">Single Product</a></li>
-                                                            <li><a href="<?=base_url()?>assets/single-product-sale.html">Single Product Sale</a></li>
-                                                            <li><a href="<?=base_url()?>assets/single-product-group.html">Single Product Group</a></li>
-                                                            <li><a href="<?=base_url()?>assets/single-product-normal.html">Single Product Normal</a></li>
-                                                            <li><a href="<?=base_url()?>assets/single-product-affiliate.html">Single Product Affiliate</a></li>
+                                                    <li class="sub-dropdown-holder"><a href="blog-details-left-sidebar.html">Blog Details</a>
+                                                        <ul class="hb-dropdown hb-sub-dropdown">
+                                                            <li><a href="blog-details-left-sidebar.html">Left Sidebar</a></li>
+                                                            <li><a href="blog-details-right-sidebar.html">Right Sidebar</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="sub-dropdown-holder"><a href="blog-gallery-format.html">Blog Format</a>
+                                                        <ul class="hb-dropdown hb-sub-dropdown">
+                                                            <li><a href="blog-audio-format.html">Blog Audio Format</a></li>
+                                                            <li><a href="blog-video-format.html">Blog Video Format</a></li>
+                                                            <li><a href="blog-gallery-format.html">Blog Gallery Format</a></li>
                                                         </ul>
                                                     </li>
                                                 </ul>
                                             </li>
-                                            <li class="dropdown-holder"><a href="<?=base_url()?>assets/blog-left-sidebar.html">Blog</a>
-                                                <ul class="hb-dropdown">
-                                                    <li class="sub-dropdown-holder"><a href="<?=base_url()?>assets/blog-left-sidebar.html">Blog Grid View</a>
-                                                        <ul class="hb-dropdown hb-sub-dropdown">
-                                                            <li><a href="<?=base_url()?>assets/blog-2-column.html">Blog 2 Column</a></li>
-                                                            <li><a href="<?=base_url()?>assets/blog-3-column.html">Blog 3 Column</a></li>
-                                                            <li><a href="<?=base_url()?>assets/blog-left-sidebar.html">Grid Left Sidebar</a></li>
-                                                            <li><a href="<?=base_url()?>assets/blog-right-sidebar.html">Grid Right Sidebar</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="sub-dropdown-holder"><a href="<?=base_url()?>assets/blog-list-left-sidebar.html">Blog List View</a>
-                                                        <ul class="hb-dropdown hb-sub-dropdown">
-                                                            <li><a href="<?=base_url()?>assets/blog-list.html">Blog List</a></li>
-                                                            <li><a href="<?=base_url()?>assets/blog-list-left-sidebar.html">List Left Sidebar</a></li>
-                                                            <li><a href="<?=base_url()?>assets/blog-list-right-sidebar.html">List Right Sidebar</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="sub-dropdown-holder"><a href="<?=base_url()?>assets/blog-details-left-sidebar.html">Blog Details</a>
-                                                        <ul class="hb-dropdown hb-sub-dropdown">
-                                                            <li><a href="<?=base_url()?>assets/blog-details-left-sidebar.html">Left Sidebar</a></li>
-                                                            <li><a href="<?=base_url()?>assets/blog-details-right-sidebar.html">Right Sidebar</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="sub-dropdown-holder"><a href="<?=base_url()?>assets/blog-gallery-format.html">Blog Format</a>
-                                                        <ul class="hb-dropdown hb-sub-dropdown">
-                                                            <li><a href="<?=base_url()?>assets/blog-audio-format.html">Blog Audio Format</a></li>
-                                                            <li><a href="<?=base_url()?>assets/blog-video-format.html">Blog Video Format</a></li>
-                                                            <li><a href="<?=base_url()?>assets/blog-gallery-format.html">Blog Gallery Format</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="megamenu-static-holder"><a href="<?=base_url()?>assets/index.html">Pages</a>
-                                                <ul class="megamenu hb-megamenu">
-                                                    <li><a href="<?=base_url()?>assets/blog-left-sidebar.html">Blog Layouts</a>
-                                                        <ul>
-                                                            <li><a href="<?=base_url()?>assets/blog-2-column.html">Blog 2 Column</a></li>
-                                                            <li><a href="<?=base_url()?>assets/blog-3-column.html">Blog 3 Column</a></li>
-                                                            <li><a href="<?=base_url()?>assets/blog-left-sidebar.html">Grid Left Sidebar</a></li>
-                                                            <li><a href="<?=base_url()?>assets/blog-right-sidebar.html">Grid Right Sidebar</a></li>
-                                                            <li><a href="<?=base_url()?>assets/blog-list.html">Blog List</a></li>
-                                                            <li><a href="<?=base_url()?>assets/blog-list-left-sidebar.html">List Left Sidebar</a></li>
-                                                            <li><a href="<?=base_url()?>assets/blog-list-right-sidebar.html">List Right Sidebar</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="<?=base_url()?>assets/blog-details-left-sidebar.html">Blog Details Pages</a>
-                                                        <ul>
-                                                            <li><a href="<?=base_url()?>assets/blog-details-left-sidebar.html">Left Sidebar</a></li>
-                                                            <li><a href="<?=base_url()?>assets/blog-details-right-sidebar.html">Right Sidebar</a></li>
-                                                            <li><a href="<?=base_url()?>assets/blog-audio-format.html">Blog Audio Format</a></li>
-                                                            <li><a href="<?=base_url()?>assets/blog-video-format.html">Blog Video Format</a></li>
-                                                            <li><a href="<?=base_url()?>assets/blog-gallery-format.html">Blog Gallery Format</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="<?=base_url()?>assets/index.html">Other Pages</a>
-                                                        <ul>
-                                                            <li><a href="<?=base_url()?>assets/login-register.html">My Account</a></li>
-                                                            <li><a href="<?=base_url()?>assets/checkout.html">Checkout</a></li>
-                                                            <li><a href="<?=base_url()?>assets/compare.html">Compare</a></li>
-                                                            <li><a href="<?=base_url()?>assets/wishlist.html">Wishlist</a></li>
-                                                            <li><a href="<?=base_url()?>assets/shopping-cart.html">Shopping Cart</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="<?=base_url()?>assets/index.html">Other Pages 2</a>
-                                                        <ul>
-                                                            <li><a href="<?=base_url()?>assets/contact.html">Contact</a></li>
-                                                            <li><a href="<?=base_url()?>assets/about-us.html">About Us</a></li>
-                                                            <li><a href="<?=base_url()?>assets/faq.html">FAQ</a></li>
-                                                            <li><a href="<?=base_url()?>assets/404.html">404 Error</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
+                                             
                                             <li><a href="<?=base_url()?>assets/about-us.html">About Us</a></li>
                                             <li><a href="<?=base_url()?>assets/contact.html">Contact</a></li>
                                             <li><a href="<?=base_url()?>assets/shop-left-sidebar.html">Smartwatch</a></li>
-                                            <li><a href="<?=base_url()?>assets/shop-left-sidebar.html">Accessories</a></li>
+                                            <li><a href="<?=base_url()?>assets/shop-left-sidebar.html">Accessories</a></li> </ul
                                         </ul>
+                                          
                                     </nav>
                                 </div>
                                 <!-- Header Bottom Menu Area End Here -->

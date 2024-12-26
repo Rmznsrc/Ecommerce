@@ -86,29 +86,7 @@ class Kategoriler extends CI_Controller {
 		}
 		redirect(base_url()."admin/kategoriler",$data); 
 	}
-	public function kategoriduzenle($id){
-		$data["title"]		  = "Kategori Düzenle"; 
-		$data['sidebartitle'] = "adminkategori";
-		$data['urun'] = $this->db->query("SELECT * FROM urun_kategori WHERE KategoriID = '".$id."' AND Statu = '1'")->result();
-	 
-		$this->load->view('admin/shared/_header',$data);
-		$this->load->view('admin/shared/_sidebar');
-		$this->load->view('admin/kategoriler/kategoriduzenle');
-		$this->load->view('admin/shared/_footer');
-	}
-	
-	public function kategoriduzenlekaydet($id)
-	{  
-		$data2 = array(
-			'Baslik' => $this->input->post('baslik'),
-			'Soru' => $this->input->post('soru'),
-			'Cevap' => $this->input->post('cevap')
-		); 
-		$this->Database_Model->update_data_with_column("urun_kategori",$data2,$id,'KategoriID');
-		$this->session->set_flashdata("sonuc","Kayıt Güncelleme İşlemi Başarı ile Gerçekleştirildi");
-		redirect(base_url()."admin/kategoriler"); 
-	} 
- 
+  
 	public function get_cat_by_parent($id) {
 		$sql = $this->db->query("SELECT * FROM urun_kategori WHERE UstKategoriID = '".$id."'");
 		$data = $sql->result();
@@ -175,47 +153,33 @@ public	function get_categorytree($parent_id = 0)
 }
 
 
-public	function gethtml($parent_id = 0)
-{
- 
-    $return_arr = array();
-
-    $query = $this->db->where('UstKategoriID',$parent_id)->get('urun_kategori');
-	
-
-    foreach ($query->result() as $r)
-    {
-        $arr = array(
-            //'KategoriID' => $r->KategoriID,
-            'Adi' => $r->Adi
-        );
-	 
-        if ($this->has_children($r->KategoriID))
-        {
-			 
-            $children = $this->gethtml($r->KategoriID);
-            if ($children)
-            {
-                $arr = $children;
-				 
-            }
-			 
-        }
-
-        $return_arr[$r->Adi] = $arr;
-
-    }
-
-    return $return_arr;
-
-}
-function has_children($id)
-{
-    $this->db->where('UstKategoriID',$id);
-    $this->db->from('urun_kategori');
-
-    return $this->db->count_all_results();
-
-}
+	public	function gethtml($parent_id = 0)
+	{
+		$return_arr = array();
+		$query = $this->db->where('UstKategoriID',$parent_id)->get('urun_kategori');
+		foreach ($query->result() as $r)
+		{
+			$arr = array(
+				//'KategoriID' => $r->KategoriID,
+				'Adi' => $r->Adi
+			);
+			if ($this->has_children($r->KategoriID))
+			{
+				$children = $this->gethtml($r->KategoriID);
+				if ($children)
+				{
+					$arr = $children;
+				}
+			} 
+			$return_arr[$r->Adi] = $arr;
+		}
+		return $return_arr;
+	}
+	function has_children($id)
+	{
+		$this->db->where('UstKategoriID',$id);
+		$this->db->from('urun_kategori');
+		return $this->db->count_all_results();
+	}
 
 }
